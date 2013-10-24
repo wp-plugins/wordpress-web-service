@@ -1,7 +1,7 @@
 <?php
 
 function wpws_getSoapClientUrl() {
-	return "http://www.soapclient.com/soapclient?template=/clientform.html&fn=soapform&SoapTemplate=none&SoapWSDL=" .
+	return "http://wsdlbrowser.com/soapclient?wsdl_url=" .
 	urlencode(wpws_getWsdlUrl());
 }
 
@@ -27,12 +27,12 @@ for($i=0; $i<strlen($soapClientUrl); $i+=$numCharPerBreak) $formattedSoapClientU
 			your WSDL enabled application to your WordPress installation.</strong></p>
 			<p>Your WSDL url is:<br />
 	<a href="<?php echo wpws_getWsdlUrl(); ?>" target="_blank"><?php echo wpws_getWsdlUrl(); ?></a>.</p>
-			<p>On the right you can see the Generic SOAP Client which<br />
+			<p>On the right you can see the WSDL Browser which<br />
 				has already loaded your WSDL file.<br />
 				You may want to check for proper operation of the plugin before using it.</p>
 		<?php } else { ?>
 			<p>You have nearly completed the installation of your WPWS plugin. <br />
-			<strong>Unfortunately your WSDL file could not be created <br />
+			<strong style="color:#990000">Unfortunately your WSDL file could not be created <br />
 			automatically because of missing write rights.</strong><br />
 			But that's no problem! Follow the 5 steps to create one manually:</p>
 			<ol>
@@ -47,8 +47,8 @@ for($i=0; $i<strlen($soapClientUrl); $i+=$numCharPerBreak) $formattedSoapClientU
 			<p>See <a href="https://code.google.com/p/wordpress-web-service" target="_blank">WordPress Web Service Plugin</a> for more information.</p></td>
 		<td>
 		<?php if(wpws_WSDLcustomized()) { ?>
-			<h2><a href="http://www.soapclient.com/soaptest.html" target="_blank">Generic SOAP Client</a></h2>
-			<iframe src="<?php echo $soapClientUrl; ?>" width="100%" height="400"></iframe>
+			<h2><a href="http://wsdlbrowser.com" target="_blank">WSDL Browser</a></h2>
+			<iframe src="<?php echo $soapClientUrl; ?>" width="100%" height="480"></iframe>
 			<p class="source"><a href="<?php echo $soapClientUrl; ?>" target="_blank"><?php echo $formattedSoapClientUrl; ?></a></p>
 		<?php } else { ?>
 			&nbsp;

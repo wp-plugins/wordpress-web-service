@@ -36,7 +36,7 @@ class wp_WebService {
 		
 		$post = get_post($postId, OBJECT);
 		return wpws_Post::convert($post);
-	 }
+	}
 	 
 	 
 	 
@@ -67,10 +67,29 @@ class wp_WebService {
 		
 		$page = get_page($pageId, OBJECT);
 		return wpws_Page::convert($page);
-	 }
-	 
-	 
-	 
+	}
+
+
+
+	/*** CATEGORIES ***/
+	/**
+     * Returns all categories
+     * @param args is the paramater as used by the WordPress get_categories method 
+     * @return wpws_Category[]
+     */
+	function getCategories($args = null) {
+		if($args != null) $args = mysql_real_escape_string($args);
+		
+		$categories = get_categories($args);
+		$wpws_categories = array();
+		foreach($categories as $category) {
+			$wpws_categories[] = wpws_Category::convert($category);
+		}
+		return $wpws_categories;
+    }
+    
+    
+    
 	/*** GALLERIES ***/
 	
 	/**

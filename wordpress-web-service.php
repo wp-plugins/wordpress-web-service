@@ -33,7 +33,8 @@ require_once(dirname(__FILE__) . "/includes/wpws-access.php");
  *
 require_once(WPWS_SOAP_SERVER_FILE);
 $x = new wp_WebService();
-$x->getGallery(123);
+//print_r($x->getPages());
+print_r($x->getCategories());
 exit;
 /**/
 
@@ -58,7 +59,7 @@ function wpws_handle_request($wp) {
 	$wpws_found = false;
 	$wsdl_requested = false;
 	foreach($_SERVER as $val) {
-		if(strlen($val) >= 5 && substr($val, 0, 5) == "/wpws") {
+		if(is_string($val) && strlen($val) >= 5 && substr($val, 0, 5) == "/wpws") {
 			$wpws_found = true;
 			if(isset($_SERVER["QUERY_STRING"]) && strpos($_SERVER["QUERY_STRING"], "?wsdl") !== false) $wsdl_requested = true;
 			break;

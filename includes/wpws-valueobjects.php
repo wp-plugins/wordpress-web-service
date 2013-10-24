@@ -110,6 +110,76 @@ class wpws_Page extends wpws_Post {
 	}
 }
 
+/* SOAP compatible Category definition */
+class wpws_Category {
+	public $termId;
+	public $name;
+	public $slug;
+	public $termGroup;
+	public $termTaxonomyId;
+	public $taxonomy;
+	public $description;
+	public $parentId;
+	public $count;
+	public $catId;
+	public $categoryCount;
+	public $categoryDescription;
+	public $categoryName;
+	public $categoryNicename;
+	public $categoryParent;
+    
+	function __construct($termId,$name,$slug,$termGroup,$termTaxonomyId,
+						 $taxonomy,$description,$parent,$count,
+						 $catId,$categoryCount,$categoryDescription,
+						 $categoryName,$categoryNicename,$categoryParent)
+    {
+        $this->termId = $termId;
+        $this->name=$name;
+        $this->slug=$slug;
+        $this->termGroup=$termGroup;
+        $this->termTaxonomyId=$termTaxonomyId;
+        $this->taxonomy=$taxonomy;
+        $this->description=$description;
+        $this->parent=$parent;
+        $this->count=$count;
+        $this->catId=$catId;
+        $this->categoryCount=$categoryCount;
+	    $this->categoryDescription=$categoryDescription;
+	    $this->categoryName=$categoryName;
+	    $this->categoryNicename=$categoryNicename;
+	    $this->categoryParent=$categoryParent;
+	}
+	
+	/**
+     * Converts a category retrieved trough the WordPress method get_category
+     * to a wpws_Category object.
+     * @return wpws_Category
+     */
+	function convert($category) {
+		if(!$category) return null;
+		else {
+			$wpws_category = new wpws_category(
+					$category->termid,
+                    $category->name,
+                    $category->slug,
+                    $category->term_group,
+                    $category->term_taxonomy_id,
+                    $category->taxonomy,
+                    $category->description,
+                    $category->parent,
+                    $category->count,
+                    intval($category->cat_ID),
+                    $category->category_count,
+                    $category->category_description,
+                    $category->category_name,
+                    $category->category_nicename,
+                    $category->category_parent
+                    );
+			return $wpws_category;
+		}
+	}
+}
+
 /* SOAP compatible Gallery definition */
 class wpws_Gallery {
 	public $id;

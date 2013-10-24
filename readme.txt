@@ -2,7 +2,7 @@
 Contributors: bkahlert
 Tags: wpws, wordpress, wsdl, webservices, web, service, web service, webservice, soap, rpc, flex, flash, flex4, flex4beta, flash builder
 Requires at least: 2.8
-Tested up to: 3.2.1
+Tested up to: 3.6.1
 Stable tag: trunk
 
 WordPress Web Service is used to access WordPress resources via WSDL and SOAP.
@@ -44,6 +44,12 @@ Developers willing to help development on WPWS are greatly welcomed.
 5. Successfully generated proxy classes for easy access of WordPress resources
 
 == Changelog ==
+
+= 0.2.3 =
+* [FEATURE] You may now also query for categories (patch provided by Arman Safikhani - armansafikhani@hotmail.com)
+* [FIX] The integrated online SOAP client is replaced by http://wsdlbrowser.com
+* [FIX] Resolved Bug 16 ("strlen() expects parameter 1 to be string")
+* [BUG] getImages & getGalleries seem to be broken
 
 = 0.2.2 =
 * Resolves potential security vulnerabilities in resize-image.php
